@@ -1,0 +1,25 @@
+#!/usr/bin/python
+#
+# Bismillahi-r-Rahmani-r-Rahim
+# Scraper for Guardian Open Platform
+
+from urllib2 import urlopen
+from BeautifulSoup import BeautifulSoup
+import json
+
+
+query = r'http://content.guardianapis.com/search?from-date=2004-01-01&page=1&page-size=50&order-by=oldest&format=json&show-fields=headline%2Cbody&show-redistributable-only=body&api-key=g327z6x4y4dx8959eg9keht6'
+
+data_dir = '/home/daoud/Data'
+
+def scrape(start_page=1):
+    global query, data_dir
+    n = start_page
+    while True:
+        url = query.replace('page=1','page=%d' % n)
+        data = json.load(urlopen(url))
+        print data
+        break
+
+if __name__ == "__main__":
+    scrape()
