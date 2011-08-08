@@ -35,7 +35,7 @@ def output_pairs(positive, negative):
     if len(negative) > len(positive):
         negative.sort()
         negative.reverse()
-        negative = negative[:max_pairs]
+        negative = negative[:len(positive)]
         negative = [x[1:3] for x in negative]
         #print negative
     else:
@@ -80,6 +80,7 @@ def process_documents(path):
             if len(positive_pairs) >= max_pairs and len(negative_pairs) >= max_pairs:
                 output_pairs(positive_pairs, negative_pairs)
                 return
+    output_pairs(positive_pairs, negative_pairs)
 
 if __name__ == "__main__":
     global data_dir
