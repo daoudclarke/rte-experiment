@@ -1,0 +1,325 @@
+<?xml version="1.0" ?>
+<entailment-corpus>
+ <pair id="1" value="TRUE">
+  <t>
+   Italian police arrested seven more suspects in the snowballing Parmalat fraud scandal yesterday as reports suggested the bankrupt food giant may soon turn to the banks for a multi-million pound rescue package to stay in business.
+  </t>
+  <h>
+   More arrests as Parmalat fraud scandal deepens
+  </h>
+ </pair>
+ <pair id="2" value="TRUE">
+  <t>
+   New Year's resolutions need not end each year in failure, according to an Australian study which suggests that all that's needed is planning.
+  </t>
+  <h>
+   Plan your new year resolution
+  </h>
+ </pair>
+ <pair id="3" value="TRUE">
+  <t>
+   Michael Jackson was allegedly paid an extra $1m (&amp;#163;560,000) for a planned television appearance to secure an exclusive interview broadcast last Sunday in which he accused police of manhandling him.
+  </t>
+  <h>
+   CBS 'buys' $1m Jackson interview
+  </h>
+ </pair>
+ <pair id="4" value="TRUE">
+  <t>
+   The Archbishop of Canterbury warned politicians, the police, the business community and the clergy last night that they needed to win trust in order to reduce cynicism and suspicion among the public.
+  </t>
+  <h>
+   Earn trust, says Archbishop
+  </h>
+ </pair>
+ <pair id="5" value="TRUE">
+  <t>
+   Britain's biggest New Year's Eve party was cancelled just an hour before midnight as atrocious weather conditions swept Edinburgh.
+  </t>
+  <h>
+   New Year is cancelled
+  </h>
+ </pair>
+ <pair id="6" value="TRUE">
+  <t>
+   A suspected suicide car bomber blew up a crowded Baghdad restaurant last night, killing at least five people and injuring 25, including two Britons and three journalists from the Los Angeles Times.
+  </t>
+  <h>
+   Five killed and 25 injured by suicide car bomber at Baghdad restaurant
+  </h>
+ </pair>
+ <pair id="7" value="TRUE">
+  <t>
+   Ted Heath's government feared - at the height of the 1973 oil crisis - that the White House was planning to invade Saudi Arabia and the Gulf to secure fuel supplies, according to Downing Street files released today.
+  </t>
+  <h>
+   Heath feared US plan to invade Gulf
+  </h>
+ </pair>
+ <pair id="8" value="TRUE">
+  <t>
+   Jonathan Aitken so infuriated the Foreign Office on his first foray into Middle Eastern banking that guidelines were formulated to deter &quot;disreputable sharks&quot; trying to get at Arab oil money.
+  </t>
+  <h>
+   Aitken's Middle East foray sparked row
+  </h>
+ </pair>
+ <pair id="9" value="TRUE">
+  <t>
+   The government last night rejected a plan to charge former private school pupils a levy of up to &amp;#163;2,100 a year on top of the proposed student top-up fee of &amp;#163;3,000 as a means of generating extra funds for the cash-poor university sector.
+  </t>
+  <h>
+   Private school levy plan rejected
+  </h>
+ </pair>
+ <pair id="10" value="TRUE">
+  <t>
+   Israel plans to double the number of settlers on the Golan Heights, as Syria renews its pressure for talks on returning the territory, taken during the 1967 six-day war.
+  </t>
+  <h>
+   Israel snubs Syria with Golan plan
+  </h>
+ </pair>
+ <pair id="11" value="TRUE">
+  <t>
+   Key Labour backbench rebel Peter Bradley today indicated he was closer to an agreement with ministers on how to safeguard the new universities when tuition fees are introduced.
+  </t>
+  <h>
+   Bradley close to agreement on new university fees
+  </h>
+ </pair>
+ <pair id="12" value="TRUE">
+  <t>
+   Fausto Tonna, the abrasive former finance director of Parmalat, today heaped abuse on journalists covering the fraud scandal at the Italian dairy group.
+  </t>
+  <h>
+   Ex-Parmalat finance chief lambasts journalists
+  </h>
+ </pair>
+ <pair id="13" value="TRUE">
+  <t>
+   The director of the Consumers' Association Dame Sheila McKechnie, who has died of cancer aged 55, was the most effective and influential consumer campaigner in the UK, and probably in Europe.
+  </t>
+  <h>
+   Dame Sheila McKechnie
+  </h>
+ </pair>
+ <pair id="14" value="TRUE">
+  <t>
+   Viewers' long-standing love affair with Auf Wiedersehen, Pet may finally be fading, after the new BBC1 series launched last night with just over 8 million viewers.
+  </t>
+  <h>
+   Viewers say goodbye to Auf Wiedersehen, Pet
+  </h>
+ </pair>
+ <pair id="15" value="TRUE">
+  <t>
+   The NHS is to open 11 new &quot;walk-in centres&quot;, where patients can get access to advice and treatment for minor ailments and injuries without an appointment, health minister John Hutton has announced.
+  </t>
+  <h>
+   NHS to open new wave of walk-in centres
+  </h>
+ </pair>
+ <pair id="16" value="TRUE">
+  <t>
+   British troops will stay in Iraq for at least three or four more years, the foreign secretary confirmed today.
+  </t>
+  <h>
+   UK troops in Iraq for years - Straw
+  </h>
+ </pair>
+ <pair id="17" value="TRUE">
+  <t>
+   Former Ulster Unionist MP Jeffrey Donaldson today confirmed he was officially defecting to the Rev Ian Paisley's anti-agreement Democratic Unionist party.
+  </t>
+  <h>
+   Ulster Unionist rebels defect to DUP
+  </h>
+ </pair>
+ <pair id="18" value="TRUE">
+  <t>
+   Tesco has announced a &amp;#163;70m package of price cuts targeted primarily at its babycare and health and beauty lines, in an aggressive challenge to high street specialists such as Boots, Superdrug and Mothercare.
+  </t>
+  <h>
+   Tesco cuts target Boots
+  </h>
+ </pair>
+ <pair id="19" value="TRUE">
+  <t>
+   A report published today claims those who work in education and health are most likely to be content with their work and show signs of career satisfaction.
+  </t>
+  <h>
+   Education workers 'most content in jobs'
+  </h>
+ </pair>
+ <pair id="20" value="TRUE">
+  <t>
+   All senior hospital doctors across the UK have now voted to accept a new contract, the British Medical Association (BMA) announced today.
+  </t>
+  <h>
+   Senior doctors vote to accept new contract
+  </h>
+ </pair>
+ <pair id="21" value="FALSE">
+  <t>
+   It has been long rumoured that Ms Levy, one of a 15-strong &quot;international vice ring&quot;, had named a &quot;third minister&quot; and even possibly a &quot;fourth minister&quot; when she was interviewed by the police, but the officially &quot;sanitised&quot; cabinet files released today at the National Archives in Kew blank out all references to possible names.
+  </t>
+  <h>
+   The only hint in the files released today is a reference to a third minister by Ms Levy, when she was interviewed by the police.
+  </h>
+ </pair>
+ <pair id="22" value="FALSE">
+  <t>
+   Smith:
+I think the email is really written from the perspective of somebody looking at a dossier whose knowledge of the subject is pretty limited - which would certainly be where I was coming from at the time - and making some observations in respect of presentation, and saying that it is not unreasonable for somebody reading this dossier for the first time to say: well, what do we know already?
+  </t>
+  <h>
+   I think that is an entirely reasonable thing to say.
+  </h>
+ </pair>
+ <pair id="23" value="FALSE">
+  <t>
+   They considered lift forces, water density, the &quot;wetted&quot; area of their stone, its mass and density and other factors such as radius, thickness and the lowest velocity at which a rebound was possible.
+  </t>
+  <h>
+   If this was more than 45, no rebound was possible.
+  </h>
+ </pair>
+ <pair id="24" value="FALSE">
+  <t>
+   But Down to Earth was up against The Royal on ITV1, which was watched by 9 million viewers and attracted a third of the available audience.
+  </t>
+  <h>
+   It was watched by 1.8 million viewers and attracted an 8% audience share between 10pm and 11.05pm.
+  </h>
+ </pair>
+ <pair id="25" value="FALSE">
+  <t>
+   ITV1's Coronation Street attracted the second highest audience of the day, with 10.9 million - a 38% audience share - tuning in between 8.30pm and 9pm.
+  </t>
+  <h>
+   Emmerdale was watched by 10.7 million viewers and attracted a 41% audience share between 6.30pm and 7.30pm.
+  </h>
+ </pair>
+ <pair id="26" value="FALSE">
+  <t>
+   &quot;
+Essentially, Bean thinks it crucial that drama engage with the world of work: &quot;I find it disappointing when I go to the theatre and you've got no idea what these people do for a living.
+  </t>
+  <h>
+   And they're drinking wine: what do they do?
+  </h>
+ </pair>
+ <pair id="27" value="FALSE">
+  <t>
+   Earlier in the day, BBC1's live coverage of Liverpool's unconvincing FA Cup third round victory over lowly Yeovil Town was watched by 5 million viewers and attracted a 41% audience share between 12.40pm and 3.10pm.
+  </t>
+  <h>
+   It was a similar story on Saturday, when BBC1's FA Cup Match of the Day Live featuring Newcastle's comfortable victory over Southampton attracted 5.7 million viewers and a 27% audience share from 5.25pm.
+  </h>
+ </pair>
+ <pair id="28" value="FALSE">
+  <t>
+   Iraq, even for most rank and file Democrats who favoured the war to depose Saddam, is understood as an extension of the anti-constitutional strategy of the Republicans' ruthless exercise of power.
+  </t>
+  <h>
+   Whether Dean or another Democrat can win the war is another war.
+  </h>
+ </pair>
+ <pair id="29" value="FALSE">
+  <t>
+   The latest round of cuts from Britain's biggest supermarket group will bring reductions to 600 product lines including baby wipes, toothpaste and medicines.
+  </t>
+  <h>
+   The cuts come as the latest salvo in the rumbling supermarket price wars.
+  </h>
+ </pair>
+ <pair id="30" value="FALSE">
+  <t>
+   It was double-edged but GH and I agreed it would fuck Gilligan if that was his source.
+  </t>
+  <h>
+   GH and I agreed to talk tomorrow.
+  </h>
+ </pair>
+ <pair id="31" value="FALSE">
+  <t>
+   But, around the world, and especially in the United States, his creation Flat Stanley is.
+  </t>
+  <h>
+   He created Flat Stanley in a bedtime story for his sons.
+  </h>
+ </pair>
+ <pair id="32" value="FALSE">
+  <t>
+   But the papers show that Mr Heath did not want the Queen panicking the country, or appearing to intervene in the industrial disputes that were paralysing the economy.
+  </t>
+  <h>
+   Mr Heath said no, thank you.
+  </h>
+ </pair>
+ <pair id="33" value="FALSE">
+  <t>
+   What Women Want lost out to Coronation Street but then attracted a bigger audience than ITV1 drama Fat Friends, which began a new series with 6.1 million viewers from 9pm.
+  </t>
+  <h>
+   The themed evening began with a repeat of Forsyth's Room 101 appearance, which attracted 3.6 million viewers and a 13% audience share from 9pm.
+  </h>
+ </pair>
+ <pair id="34" value="FALSE">
+  <t>
+   It was a similar story on Saturday, when BBC1's FA Cup Match of the Day Live featuring Newcastle's comfortable victory over Southampton attracted 5.7 million viewers and a 27% audience share from 5.25pm.
+  </t>
+  <h>
+   Later on Saturday night a new series of BBC1 detective drama Dalziel and Pascoe launched strongly, attracting 8.4 million viewers and a 36% audience share from 9.05pm.
+  </h>
+ </pair>
+ <pair id="35" value="FALSE">
+  <t>
+   Pushing exclusive music and sport content at users and, as far as possible, leveraging its links with other Time Warner divisions, it is hoping the broadband market will mirror the pay-TV one.
+  </t>
+  <h>
+   But to view broadband as analogous with pay-TV is to do it a disservice.
+  </h>
+ </pair>
+ <pair id="36" value="FALSE">
+  <t>
+   However, the Wall Street Journal reported that, in interviews with investigators, Mr Tonna claimed Parmalat's moves to comply with the two antitrust rulings were a sham because Boston Holdings had ties to Gian Paolo Zini, Parmalat's outside attorney, as well as to a California businessman.
+  </t>
+  <h>
+   Investigators now say that the sales were designed to allow Parmalat to retain indirect control of the two companies.
+  </h>
+ </pair>
+ <pair id="37" value="FALSE">
+  <t>
+   Gilligan has not been on the Today programme since the summer - he is currently on attachment to Radio 5 Live, for whom he is making documentaries - but it is known he has the broad backing of those at the very top of the BBC and could survive the Hutton report.
+  </t>
+  <h>
+   Over the Chrismas holiday a senior executive at the BBC admitted heads could roll because of the Hutton report.
+  </h>
+ </pair>
+ <pair id="38" value="FALSE">
+  <t>
+   Northern Ireland's specialist registrars - the most senior grade of junior hospital doctor - and consultants today joined their colleagues in England, Scotland and Wales in backing new terms and conditions.
+  </t>
+  <h>
+   Of the 1,484 ballot papers sent out to hospital doctors in Northern Ireland only 842 were returned.
+  </h>
+ </pair>
+ <pair id="39" value="FALSE">
+  <t>
+   Ladbrokes are offering 1-2 about the golfer Tiger Woods winning one of the four major championships - the Open, the US Open, the Masters or the US PGA - during the coming year, while their rivals Coral quote him at 3-1 not to win a major title.
+  </t>
+  <h>
+   Punters who do not fancy Woods to win at least one of the titles could put &amp;#163;100 on at 3-1, while safeguarding their money by betting &amp;#163;200 with Ladbrokes.
+  </h>
+ </pair>
+ <pair id="40" value="FALSE">
+  <t>
+   Then from 10pm, Have I Got Bruce for You, a repeat of his guest presenting turn on Have I Got News for You, proved the most popular of all with 4.3 million viewers and an 18% audience share.
+  </t>
+  <h>
+   Over on Channel Five movie repeat Murder in the First attracted 1.3 million viewers from 9pm.
+  </h>
+ </pair>
+</entailment-corpus>

@@ -11,7 +11,6 @@ def save(positive, negative, path):
     
     pairs = ([x + (True,) for x in positive] +
              [x + (False,) for x in negative])
-    print pairs
     i = 0
     for text, hypothesis, entailment in pairs:
         i += 1

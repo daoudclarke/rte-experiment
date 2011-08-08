@@ -12,10 +12,12 @@ from save_dataset import save
 
 data_dir = '/home/daoud/Data/rte'
 
+output_path = '../output/'
+
 pos_threshold = 0.578
 neg_threshold = 0.4
 rte = NGramOverlap(3, pos_threshold)
-max_pairs = 10000
+max_pairs = 200000
 
 def ent(text, hypothesis):
     global rte
@@ -41,7 +43,7 @@ def output_pairs(positive, negative):
 
     print "Positive:", len(positive)
     print "Negative:", len(negative)
-    save(positive, negative, 'guardian-entailment.xml')
+    save(positive, negative, os.path.join(output_path, 'dataset.xml'))
 
 def process_documents(path):
     positive_pairs = []
