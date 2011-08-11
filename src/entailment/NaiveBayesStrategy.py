@@ -4,6 +4,7 @@
 
 from Strategy import Strategy
 from nltk.classify.naivebayes import NaiveBayesClassifier
+from nltk.classify.maxent import MaxentClassifier
 
 class NaiveBayesStrategy(Strategy):
     """Naive Bayes Lexical RTE strategy.
@@ -20,14 +21,18 @@ class NaiveBayesStrategy(Strategy):
         h_tokens = self.tokens(hypothesis)
         features = {}
         for x in t_tokens & h_tokens:
-            features['both(%s)' % x] = True
+            features['both(%s)' % x] = 1
         for x in h_tokens - t_tokens:
-            features['missing(%s)' % x] = True
+            features['missing(%s)' % x] = 1
+        for x in t_tokens - h_tokens:
+            features['additional(%s)' %x] = 1
         return features
 
     def train(self, pairs):
         features = [(self.features(x,y), judgment) for x,y,judgment in pairs]
         self.model = NaiveBayesClassifier.train(features)
+        #self.model = MaxentClassifier.train(features, max_iter=10)
+        print self.model.most_informative_features()
         #print dir(self.model)
         #print self.model
 
