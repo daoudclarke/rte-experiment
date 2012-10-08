@@ -17,17 +17,23 @@ output_path = '../output/'
 pos_threshold = 0.578
 neg_threshold = 0.4
 rte = NGramOverlap(3, pos_threshold)
-max_pairs = 200000
+#max_pairs = 200000
+max_pairs = 20
+
+def valid_sentence(text):
+    if len(text) < 30:
+        return False
+    if len(text) > 500:
+        return False
+    if text.count('"') % 2 != 0:
+        return False
+    if text.count('\n') > 4:
+        return False
+    return True
 
 def ent(text, hypothesis):
     global rte
-    if len(text) < 20 or len(hypothesis) < 20:
-        return False
-    if len(text) > 500 or len(hypothesis) > 500:
-        return False
-    if text.count('"') % 2 != 0 or hypothesis.count('"') %2 != 0:
-        return False
-    if text.count('\n') > 4 or hypothesis.count('\n') > 4:
+    if not valid_sentence(text) or not valid_sentence(hypothesis):
         return False
     return rte.ent( (text, hypothesis) )
 
@@ -51,6 +57,7 @@ def process_documents(path):
     
     subdirs = os.listdir(path)
     subdirs.sort()
+    headlines = []
     for s in subdirs:
         new_path = os.path.join(path,s)
         files = os.listdir(new_path)
@@ -67,16 +74,24 @@ def process_documents(path):
                 print headline
                 print
                 positive_pairs.append( (sentences[0], headline) )
-            for i in range(len(sentences) - 2):
-                text = sentences[i]
-                hypothesis = sentences[i+2]
-                val = ent(text, hypothesis)
-                if val > neg_threshold:
-                    print "-- Non entailing --"
-                    print text
-                    print hypothesis
-                    print
-                    negative_pairs.append( (val, text, hypothesis) )
+            for sentence in sentences[1:]:
+                for i in range(len(headlines)):
+                    text = sentence
+                    hypothesis = headlines[i]
+                    val = ent(text, hypothesis)
+                # text = headline #sentences[i]
+                # hypothesis = sentence
+                # val = ent(text, hypothesis)
+                    if val > pos_threshold:
+                        print "-- Non entailing --"
+                        print text
+                        print hypothesis
+                        print
+                        negative_pairs.append( (val, text, hypothesis) )
+                        del headlines[i]
+                        break
+            if (valid_sentence(headline)):
+                headlines.append(headline)
             if len(positive_pairs) >= max_pairs and len(negative_pairs) >= max_pairs:
                 output_pairs(positive_pairs, negative_pairs)
                 return

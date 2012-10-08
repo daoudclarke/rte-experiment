@@ -64,8 +64,9 @@ if __name__ == '__main__':
         NaiveBayesStrategy()]
     for s in strategies:
         train_data = get_pairs(train_path)
-        #test_data = get_pairs(test_path)
-        random.shuffle(train_data)
-        index = int(len(train_data)*.66)
-        d = run(s, train_data[:index],train_data[index:])
+        test_data = get_pairs(test_path)
+        #random.shuffle(train_data)
+        #index = int(len(train_data)*.66)
+        #d = run(s, train_data[:index],train_data[index:])
+        d = run(s, train_data,test_data)
     

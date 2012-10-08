@@ -5,6 +5,9 @@
 from Strategy import Strategy
 from nltk.classify.naivebayes import NaiveBayesClassifier
 from nltk.classify.maxent import MaxentClassifier
+from nltk import corpus
+
+stopwords = set(corpus.stopwords.words('english'))
 
 class NaiveBayesStrategy(Strategy):
     """Naive Bayes Lexical RTE strategy.
@@ -14,7 +17,7 @@ class NaiveBayesStrategy(Strategy):
     [True]
     """
     def tokens(self, t):
-        return set(t.lower().split())
+        return set(t.lower().split()) - stopwords
 
     def features(self, text, hypothesis):
         t_tokens = self.tokens(text)
