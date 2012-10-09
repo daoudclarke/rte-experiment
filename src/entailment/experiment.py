@@ -3,7 +3,8 @@
 
 #train_path = r'/home/daoud/Downloads/rte/dev.xml'
 train_path = r'/home/daoud/Data/rte-dataset/guardian-entailment.xml'
-test_path = r'/home/daoud/Downloads/rte/dev2.xml'
+#test_path = r'/home/daoud/Downloads/rte/dev2.xml'
+test_path = r'/home/daoud/git/discoexperiments/data/rte/rte1/development/dev2.xml'
 
 import xml.dom.minidom as minidom
 

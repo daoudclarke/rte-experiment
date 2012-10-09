@@ -6,9 +6,12 @@
 import os
 #import nltk
 #from nltk.tokenize import sent_tokenizer
-from nltk import tokenize
+from nltk import word_tokenize, tokenize
+from nltk.tag import pos_tag
 from entailment.NGramOverlap import NGramOverlap
-from save_dataset import save
+#from save_dataset import save
+from db import RteDb
+import nltk
 
 data_dir = '/home/daoud/Data/rte'
 
@@ -18,7 +21,9 @@ pos_threshold = 0.578
 neg_threshold = 0.4
 rte = NGramOverlap(3, pos_threshold)
 #max_pairs = 200000
-max_pairs = 20
+max_pairs = 10
+
+ne_tagger = nltk.data.load('chunkers/maxent_ne_chunker/english_ace_binary.pickle')
 
 def valid_sentence(text):
     if len(text) < 30:
@@ -51,13 +56,20 @@ def output_pairs(positive, negative):
     print "Negative:", len(negative)
     save(positive, negative, os.path.join(output_path, 'dataset.xml'))
 
+def get_entities(sentence):
+    tags = pos_tag(word_tokenize(sentence))
+    parse = ne_tagger.parse(tags)
+    entities = set([x[0] for x in parse.pos() if x[-1] == 'NE'])
+    #entities = [list(x) for x in parse if type(x) == nltk.tree.Tree and x.pos()[0][-1] == 'NE']
+    return entities
+
 def process_documents(path):
     positive_pairs = []
     negative_pairs = []
     
     subdirs = os.listdir(path)
     subdirs.sort()
-    headlines = []
+    #headlines = []
     for s in subdirs:
         new_path = os.path.join(path,s)
         files = os.listdir(new_path)
@@ -74,24 +86,40 @@ def process_documents(path):
                 print headline
                 print
                 positive_pairs.append( (sentences[0], headline) )
-            for sentence in sentences[1:]:
-                for i in range(len(headlines)):
-                    text = sentence
-                    hypothesis = headlines[i]
-                    val = ent(text, hypothesis)
-                # text = headline #sentences[i]
-                # hypothesis = sentence
-                # val = ent(text, hypothesis)
-                    if val > pos_threshold:
-                        print "-- Non entailing --"
-                        print text
-                        print hypothesis
-                        print
-                        negative_pairs.append( (val, text, hypothesis) )
-                        del headlines[i]
+            if len(positive_pairs) < len(negative_pairs):
+                continue
+            for i in range(1, len(sentences) - 1):
+                text = sentences[i]
+                hypothesis = sentences[i + 1]
+                entities1 = get_entities(text)
+                entities2 = get_entities(hypothesis)
+                if len(entities1 & entities2) > 0:
+                    print "-- Non entailing --"
+                    print text
+                    print hypothesis
+                    negative_pairs.append( (0, text, hypothesis) )
+                    if len(positive_pairs) < len(negative_pairs):
                         break
-            if (valid_sentence(headline)):
-                headlines.append(headline)
+                    
+                    
+            # for sentence in sentences[1:]:
+            #     for i in range(len(headlines)):
+            #         text = sentence
+            #         hypothesis = headlines[i]
+            #         val = ent(text, hypothesis)
+            #     # text = headline #sentences[i]
+            #     # hypothesis = sentence
+            #     # val = ent(text, hypothesis)
+            #         if val > pos_threshold:
+            #             print "-- Non entailing --"
+            #             print text
+            #             print hypothesis
+            #             print
+            #             negative_pairs.append( (val, text, hypothesis) )
+            #             del headlines[i]
+            #             break
+            #if (valid_sentence(headline)):
+            #    headlines.append(headline)
             if len(positive_pairs) >= max_pairs and len(negative_pairs) >= max_pairs:
                 output_pairs(positive_pairs, negative_pairs)
                 return
