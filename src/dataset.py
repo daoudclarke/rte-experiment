@@ -32,7 +32,7 @@ def valid_sentence(text):
         return False
     if text.count('"') % 2 != 0:
         return False
-    if text.count('\n') > 4:
+    if text.count('\n') > 1:
         return False
     return True
 
@@ -70,8 +70,9 @@ def process_documents(path):
     subdirs = os.listdir(path)
     subdirs.sort()
     #headlines = []
-    #output_file = open('pairs.csv','a')
-    #output = DictWriter(
+    output_file = open('pairs.csv','a')
+    fieldnames = ["path", "text", "hypothesis", "entails"]
+    output = DictWriter(output_file, fieldnames)
     for s in subdirs:
         new_path = os.path.join(path,s)
         files = os.listdir(new_path)
@@ -83,15 +84,19 @@ def process_documents(path):
             headline = file_.readline()[:-1]
             body = file_.read()
             sentences = tokenize.sent_tokenize(body)
-            headline_entities = get_entities(headline)
             old_entities = sentence_entities = get_entities(sentences[0])
-            if len(headline_entities & sentence_entities) > 0:
-            #if ent(sentences[0], headline) > pos_threshold:
-                print "-- Entailing --"
-                print sentences[0]
-                print headline
-                print
-                positive_pairs.append( (sentences[0], headline) )
+            if valid_sentence(headline) and valid_sentence(sentences[0]):
+                headline_entities = get_entities(headline)
+                if len(headline_entities & sentence_entities) > 0:
+                    print "-- Entailing --"
+                    print sentences[0]
+                    print headline
+                    print
+                    output.writerow({"path":file_path,
+                                     "text":headline,
+                                     "hypothesis":sentences[0],
+                                     "entails":1})
+                    positive_pairs.append( (sentences[0], headline) )
             if len(positive_pairs) < len(negative_pairs):
                 continue
             for i in range(1, len(sentences) - 1):
@@ -99,10 +104,16 @@ def process_documents(path):
                 hypothesis = sentences[i + 1]
                 text_entities = old_entities
                 old_entities = hypothesis_entities = get_entities(hypothesis)
+                if not valid_sentence(text) or not valid_sentence(hypothesis):
+                    continue
                 if len(hypothesis_entities & text_entities) > 0:
                     print "-- Non entailing --"
                     print text
                     print hypothesis
+                    output.writerow({"path":file_path,
+                                     "text":text,
+                                     "hypothesis":hypothesis,
+                                     "entails":0})
                     negative_pairs.append( (0, text, hypothesis) )
                     if len(positive_pairs) < len(negative_pairs):
                         break
@@ -111,6 +122,7 @@ def process_documents(path):
                 output_pairs(positive_pairs, negative_pairs)
                 return
     output_pairs(positive_pairs, negative_pairs)
+    output_file.close()
 
 if __name__ == "__main__":
     global data_dir
