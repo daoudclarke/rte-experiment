@@ -4,22 +4,16 @@
 # Create an RTE dataset
 
 import os
-#import nltk
-#from nltk.tokenize import sent_tokenizer
+import sys
+from csv import DictWriter
+
+import nltk
 from nltk import word_tokenize, tokenize
 from nltk.tag import pos_tag
-#from entailment.NGramOverlap import NGramOverlap
-#from save_dataset import save
-from csv import DictWriter
-import nltk
 
 data_dir = '/home/daoud/Data/rte'
-
 output_path = '../output/'
 
-pos_threshold = 0.578
-neg_threshold = 0.4
-#rte = NGramOverlap(3, pos_threshold)
 #max_pairs = 200000
 max_pairs = 10
 
@@ -42,11 +36,10 @@ def get_entities(sentence):
     entities = set([x[0] for x in parse.pos() if x[-1] == 'NE'])
     return entities
 
-def process_documents(file_paths):
+def process_documents(file_paths, output_file):
     num_positive = 0
     num_negative = 0
     
-    output_file = open('pairs.csv','w')
     fieldnames = ["path", "text", "hypothesis", "entails"]
     output = DictWriter(output_file, fieldnames)
     for file_path in file_paths:
@@ -69,7 +62,6 @@ def process_documents(file_paths):
                                  "entails":1})
                 num_positive += 1
         if num_positive >= max_pairs and num_negative >= max_pairs:
-            output_file.close()
             return
         if num_positive < num_negative:
             continue
@@ -92,7 +84,6 @@ def process_documents(file_paths):
                 if num_positive < num_negative:
                     break
 
-    output_file.close()
 
 def get_files(path):
     result = []
@@ -107,6 +98,20 @@ def get_files(path):
     return result
 
 if __name__ == "__main__":
-    global data_dir
-    files = get_files(data_dir)[:100]
-    process_documents(files)
+    if len(sys.argv) == 3:
+        num_procs = int(sys.argv[1])
+        proc_num = int(sys.argv[2])
+    else:
+        num_procs = 1
+        proc_num = 1
+
+    print "Number of procedures: ", num_procs
+    print "Running procedure number: ", proc_num
+    output_file_name = os.path.join(output_path, 'pairs%i.csv' % proc_num)
+    print "Output file: ", output_file_name
+
+    output_file = open(output_file_name,'w')
+    files = get_files(data_dir)
+    files_to_process = [files[i] for i in range(proc_num, len(files), num_procs)]
+    process_documents(files_to_process, output_file)
+    output_file.close()
