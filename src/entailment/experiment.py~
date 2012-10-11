@@ -1,0 +1,58 @@
+#!/usr/bin/python
+# Bismillahi-r-Rahmani-r-Rahim
+
+
+import xml.dom.minidom as minidom
+
+from LexicalStrategy import LexicalStrategy
+from NaiveBayesStrategy import NaiveBayesStrategy
+from NGramOverlap import NGramOverlap
+
+def get_text(pair, name):
+    return pair.getElementsByTagName(name)[0].childNodes[0].nodeValue
+
+def get_pairs(path):
+    data = minidom.parse(path)
+    r = []
+    pairs = data.getElementsByTagName('pair')
+    for p in pairs:
+        t = get_text(p,'t')
+        h = get_text(p,'h')
+        r += [(t,h,p.getAttribute('value') == 'TRUE')]
+    return r
+
+def run(strategy):
+    print "Strategy: ", str(strategy)
+    train_data = get_pairs(r'/home/daoud/Downloads/rte/dev.xml')
+    strategy.train(train_data)
+
+    test_data = get_pairs(r'/home/daoud/Downloads/rte/dev2.xml')
+    test_data_no_judgments = [(x[0],x[1]) for x in test_data]
+    correct = []
+    confusion = [[0,0],[0,0]]
+    judgments = strategy.judge(test_data_no_judgments)
+    for i in range(len(test_data)):
+        j = judgments[i]
+        gold = test_data[i][2]
+        confusion[j][gold] += 1
+    print "Confusion:"
+    print "[TN,FN]", confusion[0], "<-- Judged False"
+    print "[FP,TP]", confusion[1], "<-- Judged True"
+    c = confusion[0][0] + confusion[1][1]
+    print "Accuracy: ", float(c)/len(test_data)
+    print
+    #print s.ents
+
+    #return train
+
+
+if __name__ == '__main__':
+    l = LexicalStrategy()
+    n2 = NGramOverlap(2)
+    n3 = NGramOverlap(3)
+    n4 = NGramOverlap(4)
+    b = NaiveBayesStrategy()
+    strategies = [l, n2, n3, n4, b]
+    for s in strategies:
+        d = run(s)
+    

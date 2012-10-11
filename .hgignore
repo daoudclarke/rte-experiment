@@ -1,0 +1,9 @@
+syntax: glob
+
+*.aux
+*.bbl
+*.blg
+*.log
+*.pyc
+*~
+

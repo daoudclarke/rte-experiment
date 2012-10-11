@@ -1,0 +1,59 @@
+# Bismillahi-r-Rahmani-r-Rahim
+#
+# Lexical overlap strategy
+
+from Strategy import Strategy
+
+class LexicalStrategy(Strategy):
+    """Lexical overlap RTE strategy.
+    >>> l = LxicalStrategy()
+    >>> l.train([('the cat','a dog',False),('the big cat','the cat',True)])
+    Best threshold:  0.5
+    >>> l.judge( [('the great big dog','the dog')] )
+    [True]
+    """
+    def tokens(self, t):
+        return set(t.lower().split())
+
+    def ent(self, p):
+        t = self.tokens(p[0])
+        h = self.tokens(p[1])
+        return float(len(t & h))/len(h)
+
+    def best_threshold(self, pairs):
+        """
+        Find the best threshold in a set of pairs:
+        >>> l = LexicalStrategy()
+        >>> l.best_threshold([(0.1,False),(0.2,True),(0.3,False),(0.4,False),(0.6,True),(0.7,True)])
+        0.5
+        """
+        pairs.sort()
+        best = -1
+        best_threshold = -1
+        for i in range(1,len(pairs)):
+            threshold = (pairs[i][0] + pairs[i-1][0])/2
+            correct = [x[1] == (x[0] >= threshold) for x in pairs]
+            #print correct
+            c = len([x for x in correct if x])
+            #print threshold, c
+            if c > best:
+                best = c
+                best_threshold = threshold
+        return best_threshold
+
+    def train(self, pairs):
+        self.ents = []
+        for p in pairs:
+            e = self.ent(p)
+            self.ents += [(e, p[2])]
+        
+        self.threshold = self.best_threshold(self.ents)
+        print "Best threshold: ", self.threshold
+
+    def judge(self, pairs):
+        return [self.ent(p) > self.threshold for p in pairs]
+
+
+if __name__ == "__main__":
+    import doctest
+    doctest.testmod(verbose=True)
