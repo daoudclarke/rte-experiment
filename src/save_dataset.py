@@ -12,7 +12,12 @@ def save(positive, negative, path):
     pairs = ([x + (True,) for x in positive] +
              [x + (False,) for x in negative])
     i = 0
-    for text, hypothesis, entailment in pairs:
+    for pair in pairs:
+        try:
+            text, hypothesis, entailment = pair
+        except ValueError:
+            print "Too many values: ", pair
+            continue
         i += 1
         pair = doc.createElement('pair')
         pair.setAttribute('id', str(i))

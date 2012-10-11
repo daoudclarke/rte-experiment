@@ -9,8 +9,8 @@ import os
 from nltk import word_tokenize, tokenize
 from nltk.tag import pos_tag
 from entailment.NGramOverlap import NGramOverlap
-#from save_dataset import save
-from db import RteDb
+from save_dataset import save
+from csv import DictWriter
 import nltk
 
 data_dir = '/home/daoud/Data/rte'
@@ -21,7 +21,7 @@ pos_threshold = 0.578
 neg_threshold = 0.4
 rte = NGramOverlap(3, pos_threshold)
 #max_pairs = 200000
-max_pairs = 10
+max_pairs = 6000
 
 ne_tagger = nltk.data.load('chunkers/maxent_ne_chunker/english_ace_binary.pickle')
 
@@ -70,6 +70,8 @@ def process_documents(path):
     subdirs = os.listdir(path)
     subdirs.sort()
     #headlines = []
+    #output_file = open('pairs.csv','a')
+    #output = DictWriter(
     for s in subdirs:
         new_path = os.path.join(path,s)
         files = os.listdir(new_path)
@@ -82,18 +84,23 @@ def process_documents(path):
             body = file_.read()
             sentences = tokenize.sent_tokenize(body)
             if ent(sentences[0], headline) > pos_threshold:
+                print "-- Entailing --"
                 print sentences[0]
                 print headline
                 print
                 positive_pairs.append( (sentences[0], headline) )
             if len(positive_pairs) < len(negative_pairs):
                 continue
+            old_entities = None
             for i in range(1, len(sentences) - 1):
                 text = sentences[i]
                 hypothesis = sentences[i + 1]
-                entities1 = get_entities(text)
-                entities2 = get_entities(hypothesis)
-                if len(entities1 & entities2) > 0:
+                if old_entities is not None:
+                    text_entities = old_entities
+                else:
+                    text_entities = get_entities(text)
+                old_entities = hypothesis_entities = get_entities(hypothesis)
+                if len(hypothesis_entities & text_entities) > 0:
                     print "-- Non entailing --"
                     print text
                     print hypothesis
