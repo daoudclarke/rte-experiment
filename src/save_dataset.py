@@ -5,12 +5,15 @@
 from xml.dom.minidom import Document
 
 def save(positive, negative, path):
+    pairs = ([x + (True,) for x in positive] +
+             [x + (False,) for x in negative])
+    save_pairs(pairs, path)
+
+def save_pairs(pairs, path):
     doc = Document()
     corpus = doc.createElement('entailment-corpus')
     doc.appendChild(corpus)
     
-    pairs = ([x + (True,) for x in positive] +
-             [x + (False,) for x in negative])
     i = 0
     for pair in pairs:
         try:

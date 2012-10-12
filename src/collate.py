@@ -19,7 +19,7 @@ def collate(path, output):
         for row in reader:
             pairs.append( (row["text"],
                            row["hypothesis"],
-                           [True, False][int(row["entails"])]) )
+                           [False, True][int(row["entails"])]) )
     save_dataset.save_pairs(pairs, output)
 
 if __name__ == "__main__":
