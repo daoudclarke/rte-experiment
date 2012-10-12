@@ -57,8 +57,8 @@ def process_documents(file_paths, output_file):
                 print headline
                 print
                 output.writerow({"path":file_path,
-                                 "text":headline,
-                                 "hypothesis":sentences[0],
+                                 "text":sentences[0],
+                                 "hypothesis":headline,
                                  "entails":1})
                 num_positive += 1
         if num_positive >= max_pairs and num_negative >= max_pairs:
