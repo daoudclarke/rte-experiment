@@ -58,9 +58,27 @@ ad-hoc manner):
  * Each sentence must not contain too many new line characters
  * Each sentence must contain an even number of quotation marks
 
+The source of the data is 78,696 Guardian articles from 1st January
+2004 onwards obtained through the Guardian API.
+
 No analysis has yet been performed on the dataset, so use it at your
 own risk! The intention is eventually to manually analyse a sample of
 the data.
+
+The data is in XML format and is the same as the RTE-1 dataset:
+
+> <pair id="1" value="TRUE">
+>  <t>
+>   Mail block to catch EU book bombs
+>  </t>
+>  <h>
+>   Italian authorities yesterday blocked mail from Bologna addressed
+>   to EU institutions as they tried to end a letter-bomb assault that
+>   has been aimed at European targets.
+>  </h>
+> </pair>
+
+
 
 License
 -------
