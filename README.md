@@ -69,12 +69,12 @@ The data is in XML format and is the same as the RTE-1 dataset:
 
     <pair id="1" value="TRUE">
      <t>
-      Mail block to catch EU book bombs
-     </t>
-     <h>
       Italian authorities yesterday blocked mail from Bologna addressed
       to EU institutions as they tried to end a letter-bomb assault that
       has been aimed at European targets.
+     </t>
+     <h>
+      Mail block to catch EU book bombs
      </h>
     </pair>
 
